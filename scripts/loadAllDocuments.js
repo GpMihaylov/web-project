@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
         case "Sesiq":
         case "UchebenOtdel":
         case "OtdelStudenti":
-        case "PersonalDocuments":
+        case "KandidatStudenti":
+        case "NoCategory":
             showByCategory(url.searchParams.get('category'));
             break;
         default:
