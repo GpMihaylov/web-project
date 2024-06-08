@@ -1,0 +1,99 @@
+.user-documents {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.document-wrapper {
+    margin: 2.5849%;
+    width: 25%;
+    border: 1px solid #bebebe;
+    padding: 1.5%;
+    border-radius: 2px;
+    box-shadow: 2px 2px 19px 3px #969696;
+    background-color: white;
+}
+
+.label, .content {
+    font-size: 120%;
+    font-family: Papyrus;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.label {
+    width: 35%;
+    float: left;
+    border-right: 1px solid #848484;
+    border-bottom: 1px solid #6f3232;
+    box-sizing: border-box;
+    text-align: right;
+    padding-right: 2%;
+    background-color: #6f3232;
+    color: white;
+}
+
+.content {
+    width: 64%;
+    float: right;
+    box-sizing: border-box;
+    padding-left: 1%;
+    border-bottom: 1px solid #6f3232;
+}
+
+.button-holder {
+    display: inline;
+    width: 30%;
+    overflow: auto;
+}
+
+.priority-button, .delete-button, .download-button {
+    width: 30%;
+    margin-top: 3%;
+    padding: 2% 12% 2% 12%;
+    border: 1px solid #ffffff;
+    background-color: #e6e6e629;
+}
+
+    .priority-button:active, .delete-button:active, .download-button:active {
+        -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+        -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+        box-shadow: inset 0px 0px 5px #929292;
+        outline: none;
+        border-radius: 3px;
+    }
+
+    .priority-button:hover, .delete-button:hover, .download-button:hover {
+        border: 1px solid #aeaeae7d;
+        border-radius: 3px;
+    }
+
+.delete-button {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.documents-headline {
+    color: white;
+    background-color: #6f3232;
+    padding: 0.5%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 150%;
+    font-family: Candara;
+    padding-left: 1%;
+    margin-left: 3.5%;
+    margin-right: 3.5%;
+}
+
+.document-content {
+    border: 1px solid black;
+    overflow: auto;
+    border-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.bottom-right {
+    border: none;
+    padding-bottom: 0;
+}

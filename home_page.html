@@ -1,0 +1,123 @@
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="./scripts/customLib.js" defer></script>
+    <script src="./scripts/uploadDocument.js" defer></script>
+    <script src="./scripts/redirectingFromHomePage.js" defer></script>
+    <script src="./scripts/loadUserDocuments.js" defer></script>
+    <script src="./scripts/logout.js" defer></script>
+    <link rel="stylesheet" href="styles/css/toast-messages.css">
+    <link rel="stylesheet" type="text/css" href="./styles/css/home-page/home_page.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/css/home-page/popups.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/css/home-page/files.css" />
+
+
+</head>
+
+<body>
+    <div id="page" class="page">
+        <header>
+            <div class="h1-container">
+                <h1>Система за входиране на документ</h1>
+            </div>
+            <div class="login-greeting-container">
+                <div id="login_greeting" class="login-greeting"></div>
+            </div>
+            <div class="buttons-container">
+                <div class="upload-button-wrapper">
+                    <button id="open_upload_document_form" title="Качи документ" class="upload-button" onclick="openUploadDocumentForm()">
+                        <img src="./images/create-file.png"></img>
+                    </button>
+                </div>
+                <div class="logout-button-wrapper">
+                    <button id="logout_btn" class="logout-btn home-page-button">Изход</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="documents-headline">
+            Вашите документи:
+        </div>
+        <div class="main-wrapper">
+            <div id="documentsForUser" class="user-documents">
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="upload_document_form" class="upload-document-form" style="display: none;">
+        <div class="heading-popup">
+            <div class="popup-message">
+                Добавяне на файл
+            </div>
+            <div class="close upload-close">
+                <button class=" close_upload_form home-page-button" onclick="closeUploadForm()">x</button>
+            </div>
+        </div>
+
+
+        <div class="categories-wrapper">
+            <label class="choose-category-label">Избери категория:</label>
+            <select id="categories">
+                <option value="OtdelStudenti" selected>Отдел студенти</option>
+                <option value="UchebenOtdel">Учебен отдел</option>
+                <option value="Sesiq">Сесия</option>
+                <option value="PersonalDocuments">Лични документи</option>
+            </select>
+        </div>
+        <div class="choose-file-wrapper">
+            <label for="uploaded_file" class="custom-file-upload">
+                <span class="text-span">Избери файл</span>
+                <span class="img-span">
+                    <img class="upload-image" src="./images/choose-file.png"></img>
+                </span>
+            </label>
+            <input class="choose-file" id="uploaded_file" type="file" name="file_submit" multiple />
+        </div>
+        <div class="upload-wrapper">
+            <input class="home-page-button upload-file" id="uploadDocumentBTN" type="submit" value="Качи документа" />
+        </div>
+    </div>
+
+
+    <div id="generated_key_popup" class="generated-key-popup" style="display: none;">
+        <div class="heading-popup">
+            <div class="popup-message">
+                Копирай ключа за изтегляне
+            </div>
+            <div class="close key-close">
+                <button class="x home-page-button" onclick="closeAccessKeyForm()">x</button>
+            </div>
+        </div>
+        <div class="key-wrapper">
+            <input class="key-field" type="text" id="generated_access_key" disabled>
+            <button class="input-field-icon-button" onclick="copyAccessKey()">
+                <img class="copy-image" src="./images/copy.png"></img>
+            </button>
+        </div>
+    </div>
+
+    <div class="download-popup" id="download_form" class="download-form" style="display: none;">
+        <div class="heding heading-popup">
+            <div class="popup-message">
+                Изтегли файла
+            </div>
+            <div class="close key-close">
+                <button class="x home-page-button" onclick="closeDownloadForm()">x</button>
+            </div>
+        </div>
+        <input id="hidden_file_name" type="hidden" value="a" />
+        <input class="key-field" id="access_key_input" type="text" placeholder="Ключ за достъп" />
+        <button class="input-field-icon-button" id="download_in_form_btn">
+            <img class="download-image" src="./images/download.png"></img>
+        </button>
+    </div>
+
+    <div id="error_messages"></div>
+    <div id="success_messages"></div>
+
+</body>
+
+</html>

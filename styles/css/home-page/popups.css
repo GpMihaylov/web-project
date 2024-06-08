@@ -1,0 +1,156 @@
+.upload-document-form {
+    position: fixed;
+    top: 25%;
+    left: 30%;
+    right: 30%;
+    background: white;
+    padding: 3%;
+    border-radius: 2px;
+    box-shadow: 0px 0px 20px 1px #6f3232;
+}
+
+.close, .categories-wrapper, .choose-file-wrapper {
+    margin-bottom: 10%;
+}
+
+.close_upload_form {
+    margin-left: 5%;
+    padding: 1% 4% 1% 4%;
+    font-size: 120%;
+}
+
+.close_upload_form:hover {
+    background-color: #744f38;
+}
+
+#categories {
+    border: 2px solid #e5e5e5;
+    border-radius: 5px;
+    font-size: 90%;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 3%;
+    font-weight: lighter;
+    font-family: Candara;
+}
+
+.upload-image {
+    height: 100%;
+    width: 3%;
+}
+
+.text-span {
+    font-size: 100%;
+    font-weight: lighter;
+    font-family: Candara;
+    text-align: center;
+}
+
+.choose-file {
+    font-size: 100%;
+    font-weight: lighter;
+    font-family: Candara;
+    font-weight: bold;
+}
+
+    .choose-file::file-selector-button {
+        display: none;
+    }
+
+.custom-file-upload {
+    border: 2px solid white;
+    padding: 2%;
+    border-radius: 5px;
+}
+
+    .custom-file-upload:hover {
+        border: 2px solid #e5e5e5;
+    }
+
+    .custom-file-upload:active {
+        -webkit-box-shadow: inset 0px 0px 5px #9a9a9a;
+        -moz-box-shadow: inset 0px 0px 5px #9a9a9a;
+        box-shadow: inset 0px 0px 5px #9a9a9a;
+    }
+
+.upload-file {
+    padding: 3%;
+}
+
+.generated-key-popup, .download-popup{
+    background-color: white;
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    right: 40%;
+    border-radius: 2px;
+    box-shadow: 0px 0px 20px 1px #6f3232;
+    padding: 2%;
+}
+
+.key-close {
+    margin-bottom: 6%;
+    margin-left: 94%;
+}
+
+.key-wrapper {
+    width: 100%;
+}
+
+.key-field {
+    width: 80%
+}
+
+.key-field {
+    border: 1px solid #bababa;
+    border-radius: 5px;
+    font-size: 90%;
+    box-sizing: border-box;
+    width: 80%;
+    padding: 2%;
+    font-weight: lighter;
+    font-family: Candara;
+}
+
+
+.copy-image {
+    width: 100%;
+    background: transparent;
+}
+
+.download-image {
+    width: 100%;
+    background: transparent;
+}
+
+.input-field-icon-button {
+    background: none;
+    border: none;
+    width: 13%;
+    position: relative;
+    top: 8px;
+}
+
+.input-field-icon-button:hover {
+    background: #f5f5f5;
+    border-radius: 5px;
+}
+
+.popup-message {
+    float: left;
+    width: 90%;
+    font-weight: bold;
+    font-family: Candara;
+    font-size: 120%;
+}
+
+
+.upload-close{
+    margin-left: 45%;
+}
+
+.choose-category-label{
+    font-weight: bold;
+    font-family: Candara;
+    margin-bottom: 10%;
+}

@@ -1,0 +1,51 @@
+.label {
+    background-color: #686ae3;
+}
+
+.document-content {
+    border-color: #6364df;
+}
+
+.label {
+    border-color: #686ae3;
+}
+
+.content {
+    border-color: #6364df;
+}
+
+.bottom-right {
+    border: none;
+}
+
+
+.logout-btn {
+    background-color: #686ae3;
+    border-color: #6364df;
+}
+
+.documents-admin-headlne {
+    background-color: #686ae3;
+}
+
+.category-button-container {
+    display: inline;
+    float: right;
+    margin-top: 0.25%;
+    margin-left: 0.2%;
+}
+
+.category-button {
+    background: transparent;
+    color: black;
+    font-weight: bold;
+    font-family: Candara;
+    font-size: 65%;
+    text-decoration: underline;
+    border: none;
+    margin-bottom: 0.5%;
+}
+
+    .category-button:hover {
+        color: #f1f1f1;
+    }

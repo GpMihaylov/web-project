@@ -1,0 +1,28 @@
+#error_messages, #success_messages{
+    position: fixed;
+    top : 80%;
+    left: 40%;
+    right: 40%;
+    width: 20%;
+}
+
+.error_toast{
+    padding: 5px;
+    width: auto;
+    background-color: red;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    opacity: 0.9;
+    margin-bottom: 1%;
+}
+
+.success_toast{
+    padding: 5px;
+    width: auto;
+    background-color: green;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    opacity: 0.9;
+}
