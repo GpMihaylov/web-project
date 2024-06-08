@@ -1,51 +1,63 @@
 .label {
-    background-color: #686ae3;
+    background-color: #D2B48C;
+    border-color: #D2B48C;
 }
 
 .document-content {
-    border-color: #6364df;
-}
-
-.label {
-    border-color: #686ae3;
+    border-color: #A0522D;
 }
 
 .content {
-    border-color: #6364df;
+    border-color: #A0522D;
 }
 
-.bottom-right {
-    border: none;
+.dropdown {
+    position: absolute;
+    left: 2%;
+    top: 25%;
+    height: 50%;
+    width: 75px;
 }
 
-
-.logout-btn {
-    background-color: #686ae3;
-    border-color: #6364df;
+.dropdown-button {
+    position: absolute;
+    background-color: darkgray;
+    height: 100%;
+    width: 100%;
 }
 
-.documents-admin-headlne {
-    background-color: #686ae3;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    left: 0;
+    top: 100%;
 }
 
-.category-button-container {
-    display: inline;
-    float: right;
-    margin-top: 0.25%;
-    margin-left: 0.2%;
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content .category-button-container {
+    display: block;
 }
 
 .category-button {
-    background: transparent;
+    background-color: transparent;
     color: black;
     font-weight: bold;
     font-family: Candara;
-    font-size: 65%;
-    text-decoration: underline;
+    font-size: 16px;
+    text-decoration: none;
     border: none;
-    margin-bottom: 0.5%;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
 }
 
     .category-button:hover {
-        color: #f1f1f1;
+        background-color: #ddd;
     }

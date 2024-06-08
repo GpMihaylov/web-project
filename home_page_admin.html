@@ -13,48 +13,52 @@
 </head>
 
 <body>
-    <header>
-        <div class="h1-container">
-            <h1>Система за входиране на документ</h1>
-        </div>
-        <div class="login-greeting-container">
-            <div id="login_greeting" class="login-greeting"></div>
-        </div>
-        <div class="buttons-container">
+    <div id="page" class="page">
+        <header>
+            <div class="dropdown">
+                <button class="dropdown-button" id="dropdownButton">
+                    <img src="./images/categories.png"></img>
+                </button>
+                <div class="dropdown-content">
+                    <div id="show_all_documents" class="category-button-container">
+                        <button id="show_all_documents_button" class="category-button" onclick="loadAllDocuments()">Всички документи</button>
+                    </div>
+                    <div id="show_OtdelStudenti" class="category-button-container leftest-ctg-btn">
+                        <button id="show_OtdelStudenti_button" class="category-button" onclick="showByCategory('OtdelStudenti')">Отдел Студенти</button>
+                    </div>
+                    <div id="show_UchebenOtdel" class="category-button-container">
+                        <button id="show_UchebenOtdel_button" class="category-button" onclick="showByCategory('UchebenOtdel')">Учебен Отдел</button>
+                    </div>
+                    <div id="show_Sesiq" class="category-button-container">
+                        <button id="show_Sesiq_button" class="category-button" onclick="showByCategory('Sesiq')">Сесия</button>
+                    </div>
+                    <div id="show_PersonalDocuments" class="category-button-container">
+                        <button id="show_PersonalDocuments_button" class="category-button" onclick="showByCategory('PersonalDocuments')">Лични документи</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h1-container">
+                <h1>DocTrack</h1>
+                <div class="login-greeting-container">
+                    <div id="login_greeting" class="login-greeting"></div>
+                </div>
+            </div>
+
             <div class="logout-button-wrapper">
                 <button id="logout_btn" class="logout-btn home-page-button">Изход</button>
             </div>
+        </header>
+
+
+        <div class="main-wrapper">
+            <div id="all_documents" class="user-documents">
+            </div>
         </div>
-    </header>
-    
-    <div class="documents-headline documents-admin-headlne">
-        Документи
-        <div id="show_OtdelStudenti" class="category-button-container leftest-ctg-btn">
-            <button id="show_OtdelStudenti_button" class="category-button" onclick="showByCategory('OtdelStudenti')">Отдел Студенти</button>
-        </div>
-        <div id="show_UchebenOtdel" class="category-button-container">
-            <button id="show_UchebenOtdel_button" class="category-button" onclick="showByCategory('UchebenOtdel')">Учебен Отдел</button>
-        </div>
-        <div id="show_Sesiq" class="category-button-container">
-            <button id="show_Sesiq_button" class="category-button" onclick="showByCategory('Sesiq')">Сесия</button>
-        </div>
-        <div id="show_PersonalDocuments" class="category-button-container">
-            <button id="show_PersonalDocuments_button" class="category-button" onclick="showByCategory('PersonalDocuments')">Лични документи</button>
-        </div>
-        <div id="show_all_documents" class="category-button-container">
-            <button id="show_all_documents_button" class="category-button" onclick="loadAllDocuments()">Всички документи</button>
-        </div>
+
+        <div id="error_messages"></div>
+        <div id="success_messages"></div>
     </div>
-    
-
-    <div class="main-wrapper">
-        <div id="all_documents" class="user-documents">
-        </div>
-    </div>
-
-    <div id="error_messages"></div>
-    <div id="success_messages"></div>
-
 </body>
 
 </html>

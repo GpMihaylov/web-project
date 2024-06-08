@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="./styles/css/index.css" type="text/css">
+    <link rel="stylesheet" href="./styles/css/toast-messages.css" type="text/css">
+    <script src="./scripts/login.js" defer></script>
+</head>
+<body>
+    <div class="system-name">
+        <h1>DocTrack</h1>
+    </div>
+    <div class="form-wrapper">
+        <div class="login_form">
+            <div class="msg login-msg">
+                Влез в своя акаунт
+            </div>
+            <input class="textfield" id="login_email" type="email" placeholder="Email" />
+            <input class="textfield" id="login_password" type="password" placeholder="Password" />
+            <input class="button login-button" id="login_submitButton" type="submit" value="Вход" />
+            <div class="register-link">
+                <p>Нямате акаунт? <a href="register.html">Регистрирайте се тук</a></p>
+            </div>
+        </div>
+    </div>
+    <div id="login_error_messages" class="error-message-wrapper"></div>
+</body>
+</html>

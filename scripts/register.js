@@ -102,9 +102,15 @@ function displayErrors(errorMessages) {
 function clearAllErrors() {
 
     const errorMessageContainerLogin = document.getElementById('login_error_messages');
+    if (errorMessageContainerLogin) {
     errorMessageContainerLogin.setAttribute('style', 'display:none');
 
     errorMessageContainerLogin.innerText = '';
+    }
+
     const errorMessageContainerReg = document.getElementById('reg_error_messages');
-    errorMessageContainerReg.innerText = '';
+    if (errorMessageContainerReg) {
+        errorMessageContainerReg.innerText = '';
+    }
+
 }

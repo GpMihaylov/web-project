@@ -17,11 +17,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE DATABASE IF NOT EXISTS `document_entry_system_62413_62414_62415` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `document_entry_system_62413_62414_62415`;
+CREATE DATABASE IF NOT EXISTS `doctrack_3mi0600047_6mi0600059` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `doctrack_3mi0600047_6mi0600059`;
 
 --
--- База данни: `document_entry_system_62413_62414_62415`
+-- База данни: `doctrack_3mi0600047_6mi0600059`
 --
 
 -- --------------------------------------------------------

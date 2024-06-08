@@ -18,27 +18,24 @@
 <body>
     <div id="page" class="page">
         <header>
+            <div class="upload-button-wrapper">
+                <button id="open_upload_document_form" title="Качи документ" class="upload-button" onclick="openUploadDocumentForm()">
+                    <img src="./images/create-file.png"></img>
+                </button>
+            </div>
             <div class="h1-container">
-                <h1>Система за входиране на документ</h1>
-            </div>
-            <div class="login-greeting-container">
-                <div id="login_greeting" class="login-greeting"></div>
-            </div>
-            <div class="buttons-container">
-                <div class="upload-button-wrapper">
-                    <button id="open_upload_document_form" title="Качи документ" class="upload-button" onclick="openUploadDocumentForm()">
-                        <img src="./images/create-file.png"></img>
-                    </button>
-                </div>
-                <div class="logout-button-wrapper">
-                    <button id="logout_btn" class="logout-btn home-page-button">Изход</button>
+                <h1>DocTrack</h1>
+                <div class="login-greeting-container">
+                    <div id="login_greeting" class="login-greeting"></div>
                 </div>
             </div>
+            <div class="logout-button-wrapper">
+                <button id="logout_btn" class="logout-btn home-page-button">Изход</button>
+            </div>
+
         </header>
 
-        <div class="documents-headline">
-            Вашите документи:
-        </div>
+
         <div class="main-wrapper">
             <div id="documentsForUser" class="user-documents">
             </div>

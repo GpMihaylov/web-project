@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(function (response) {
             if (!response['logged']) {
-                document.location = './index.html';
+                document.location = './login.html';
             } else if (response['isAdmin']) {
                 document.location = './home_page_admin.html';
             }

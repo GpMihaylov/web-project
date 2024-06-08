@@ -84,23 +84,45 @@ class UploadedDocument {
         document_content_div.appendChild(document_priority_div);
 
 
-        
-        //increase priority button
-        const increase_priority_div = document.createElement('div');
-        increase_priority_div.classList.add("button-holder");
+        if (this.document_priority === "low") {
 
-        const increase_priority_button = document.createElement('button');
-        increase_priority_button.classList.add("priority-button")
-        increase_priority_button.setAttribute('title', "Увеличи приоритета")
+            //increase priority button
+            const increase_priority_div = document.createElement('div');
+            increase_priority_div.classList.add("button-holder");
 
-        var priority_img = document.createElement('img');
-        priority_img.src = "images/raise-priority.webp";
-        //const increase_priority_button_text = document.createTextNode('Увеличи приоритета');
+            const increase_priority_button = document.createElement('button');
+            increase_priority_button.classList.add("priority-button")
+            increase_priority_button.setAttribute('title', "Увеличи приоритета")
 
-        increase_priority_button.appendChild(priority_img);
-        increase_priority_button.addEventListener("click", increasPriority.bind(null, this.file_name));
-        increase_priority_div.appendChild(increase_priority_button);
-        document_div.appendChild(increase_priority_div);
+            var priority_img = document.createElement('img');
+            priority_img.src = "images/increase.png";
+            //const increase_priority_button_text = document.createTextNode('Увеличи приоритета');
+
+            increase_priority_button.appendChild(priority_img);
+            increase_priority_button.addEventListener("click", increasPriority.bind(null, this.file_name));
+            increase_priority_div.appendChild(increase_priority_button);
+            document_div.appendChild(increase_priority_div);
+        }
+
+        if (this.document_priority === "high") {
+
+
+            //decrease priority button
+            const decrease_priority_div = document.createElement('div');
+            decrease_priority_div.classList.add("button-holder");
+
+            const decrease_priority_button = document.createElement('button');
+            decrease_priority_button.classList.add("priority-button")
+            decrease_priority_button.setAttribute('title', "Намали приоритета")
+
+            var priority_img = document.createElement('img');
+            priority_img.src = "images/decrease.png";
+
+            decrease_priority_button.appendChild(priority_img);
+            decrease_priority_button.addEventListener("click", decreasPriority.bind(null, this.file_name));
+            decrease_priority_div.appendChild(decrease_priority_button);
+            document_div.appendChild(decrease_priority_div);
+        }
 
         
         //delete button
@@ -208,6 +230,35 @@ function increasPriority(file, event) {
         });
 }
 
+function decreasPriority(file, event) {
+
+    clearAllMessages();
+
+    let formData = new FormData();
+    formData.append("file_name", file);
+
+    fetch('./endpoints/decreasePriorityForDocument.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("");
+            }
+        })
+        .then(function (response) {
+            if (response['success']) {
+                displaySuccess('Приоритета е зададен като нисък.');
+            } else {
+                displayError('Проблем с промяната на приоритета.');
+            }
+        })
+        .catch(function () {
+            displayError('Грешка при задаването на приоритет.');
+        });
+}
 
 
 function deleteDocument(file, event) {

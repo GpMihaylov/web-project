@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="./styles/css/index.css" type="text/css">
+    <link rel="stylesheet" href="./styles/css/toast-messages.css" type="text/css">
+    <script src="./scripts/register.js" defer></script>
+</head>
+<body>
+    <div class="system-name">
+        <h1>DocTrack</h1>
+    </div>
+    <div class="form-wrapper">
+        <div class="msg">
+            Създай своя акаунт
+        </div>
+        <input class="textfield" id="reg_email" type="email" placeholder="Email" />
+        <input class="textfield" id="reg_password" type="password" placeholder="Password" />
+        <input class="textfield" id="reg_confirmPassword" type="password" placeholder="Confirm password" />
+        <input class="button" id="reg_submitButton" type="submit" value="Регистрирай се!" />
+        <div class="login-link">
+            <p>Вече имате акаунт? <a href="login.html">Влезте тук</a></p>
+        </div>
+    </div>
+    <div id="reg_error_messages" class="error-message-wrapper"></div>
+</body>
+</html>

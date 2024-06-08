@@ -1,12 +1,12 @@
-#error_messages, #success_messages{
+#error_messages, #success_messages {
     position: fixed;
-    top : 80%;
+    top: 80%;
     left: 40%;
     right: 40%;
     width: 20%;
 }
 
-.error_toast{
+.error_toast {
     padding: 5px;
     width: auto;
     background-color: red;
@@ -17,7 +17,7 @@
     margin-bottom: 1%;
 }
 
-.success_toast{
+.success_toast {
     padding: 5px;
     width: auto;
     background-color: green;

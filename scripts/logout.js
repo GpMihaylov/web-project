@@ -14,6 +14,6 @@ function logout() {
         throw new Error();
       }
     })
-    .then(function (response) { document.location = './index.html'; })
+    .then(function (response) { document.location = './login.html'; })
     .catch(function (error) { alert("logout failed"); });
 }
