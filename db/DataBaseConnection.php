@@ -149,6 +149,21 @@ class DataBaseConnection {
         }
     }
 
+        public function decreasePriorityForDocument($file_name, $username) {
+
+        $updateStatement = $this->connection->prepare("
+        UPDATE `uploadeddocument` SET `document_priority` = 'low' WHERE `uploadeddocument`.`file_name` = :file_name 
+        AND `uploadeddocument`.`user` = :username;");
+
+        $updateStatement->execute(['username' => $username, 'file_name' => $file_name]);
+
+        if ($updateStatement) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     
 
     public function getAllUploadedDocuments() {
