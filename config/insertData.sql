@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2022 at 11:18 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Jun 09, 2024 at 05:30 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,9 +18,9 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `document_entry_system_62413_62414_62415`
+-- Database: `doctrack_3mi0600047_6mi0600059`
 --
-USE `document_entry_system_62413_62414_62415`;
+USE `doctrack_3mi0600047_6mi0600059`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +29,7 @@ USE `document_entry_system_62413_62414_62415`;
 --
 
 INSERT INTO `user` (`email`, `salt`, `password`, `is_admin`) VALUES
-('ivan@ivan.com', '3243158a9f2f830b25fec7d6eaf4dbbccaf63af00291e04e2c5ef12b3067e30c', '32kqXcDLr5IX.', 0);
+('georgi@gmail.com', '5db26aa8596f41e6e1efbd52dbe13e07a41da2feb27ea3833bcb6c28b82824aa', '5dwOQ6q/0Kw/E', 0);
 
 
 --
@@ -37,14 +37,13 @@ INSERT INTO `user` (`email`, `salt`, `password`, `is_admin`) VALUES
 --
 
 INSERT INTO `uploadeddocument` (`file_name`, `user`, `location`, `category`, `archived`, `times_downloaded`, `access_key`, `document_priority`) VALUES
-('text_file1.txt', 'ivan@ivan.com', './upload/62a45c4b4c654.txt', 'OtdelStudenti', 0, 0, '36x8vpqlnux1vwkj3o2ign', 'low'),
-('text_file2.txt', 'ivan@ivan.com', './upload/62a45d56ed7ee.txt', 'UchebenOtdel', 0, 0, '34zfcct4f1a1r5k7lz8ueb', 'low'),
-('text_file3.txt', 'ivan@ivan.com', './upload/62a45d645d229.txt', 'Sesiq', 0, 0, 'puhtqd1izfh4ho4uh27n8k', 'low'),
-('text_file4.txt', 'ivan@ivan.com', './upload/62a45d6edf6f6.txt', 'PersonalDocuments', 0, 0, 'onl2y1gi3r8hvvb2ga40md', 'low'),
-('text_file5.txt', 'ivan@ivan.com', './upload/62a45d822fa1a.txt', 'OtdelStudenti', 0, 0, '0jrwdglqk9z510e6q8kav5j', 'low'),
-('text_file6.txt', 'ivan@ivan.com', './upload/62a45da079ca6.txt', 'UchebenOtdel', 0, 0, '7pvaz9l2qnm85pailhm5x', 'low'),
-('text_file7.txt', 'ivan@ivan.com', './upload/62a45dae42b51.txt', 'Sesiq', 0, 0, 'eo2vruv9i85ty807i52p1', 'low'),
-('text_file8.txt', 'ivan@ivan.com', './upload/62a45db996e23.txt', 'PersonalDocuments', 0, 0, 'hrhant1krez3b91jl3waa', 'low');
+('document1.txt', 'georgi@gmail.com', './upload/66659e5c99cff.txt', 'OtdelStudenti', 0, 0, '9jjxdvovdptlw364w9xh', 'low'),
+('document2.txt', 'georgi@gmail.com', './upload/6665a8ca8c17a.txt', 'Sesiq', 0, 0, 'tapsleqw0phpuafccqi5', 'low'),
+('document3.txt', 'georgi@gmail.com', './upload/6665a8e851861.txt', 'Sesiq', 0, 0, 'r5dqzrn8xomatxkcufqlqo', 'low'),
+('document4.txt', 'georgi@gmail.com', './upload/6665a90295e14.txt', 'KandidatStudenti', 0, 0, '1q9qjyv119tlkak4w5vzwj', 'low'),
+('document5.txt', 'georgi@gmail.com', './upload/6665ca12cd3c3.txt', 'UchebenOtdel', 0, 0, 'rahynwv0wjf7cuehdtsy4e', 'low'),
+('document6.txt', 'georgi@gmail.com', './upload/6665ca3256e6f.txt', 'NoCategory', 0, 0, 'yy94s4h2d3csew4i4grrg', 'high'),
+('document7.txt', 'georgi@gmail.com', './upload/6665ca7c24ca6.txt', 'OtdelStudenti', 0, 0, 'gx0zxhyadb7sal5p1bek6', 'low');
 
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
