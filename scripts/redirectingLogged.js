@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           document.location = './home_page.html';
         }
+      } else {
+        document.location = './login.html';
       }
     })
     .catch(function () { });
