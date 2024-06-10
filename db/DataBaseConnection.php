@@ -243,7 +243,7 @@ class DataBaseConnection {
     public function getUploadedDocumentsByCategory($category) {
 
             $selectStatement = $this->connection->prepare("
-                SELECT * FROM " . "uploadeddocument" . " WHERE category = :category ORDER BY document_priority;");
+                SELECT * FROM " . "uploadeddocument" . " WHERE category = :category ORDER BY archived,document_priority;");
 
             $selectStatement->execute(['category' => $category]);
 
