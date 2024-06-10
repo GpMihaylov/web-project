@@ -124,7 +124,7 @@ class UploadedDocument {
         } else {
             document_archived_text = document.createTextNode("no");
         }
-/*        const document_archived_text = document.createTextNode(`${this.archived}`);*/
+
         document_archived_div.appendChild(document_archived_text);
         document_content_div.appendChild(document_archived_div);
 
@@ -136,7 +136,6 @@ class UploadedDocument {
         const archive_button = document.createElement('button');
         archive_button.classList.add("priority-button")
 
-        //const archive_button_text = document.createTextNode('Архивирай');
         var archive_img = document.createElement('img');
         archive_img.setAttribute('src', 'images/archive.png');
         archive_button.appendChild(archive_img);
@@ -153,7 +152,6 @@ class UploadedDocument {
         const unarchive_button = document.createElement('button');
         unarchive_button.classList.add("delete-button");
 
-        //const unarchive_button_text = document.createTextNode('Разархивирай');
         var unarchive_img = document.createElement('img');
         unarchive_img.setAttribute('src', 'images/unarchive.png');
         unarchive_button.appendChild(unarchive_img);
@@ -170,7 +168,6 @@ class UploadedDocument {
         const download_button = document.createElement('button');
         download_button.classList.add("download-button");
 
-        //const button_text = document.createTextNode('Изтегли');
         var download_img = document.createElement('img');
         download_img.setAttribute('src', 'images/download.png');
         download_button.appendChild(download_img);
