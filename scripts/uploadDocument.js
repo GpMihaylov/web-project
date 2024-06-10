@@ -23,7 +23,7 @@ function uploadDocument() {
     let access_key = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     let formData = new FormData();
     formData.append("file", uploadedDocuments[0]);
-    formData.append("username", "ivan");
+    formData.append("username", "");
     formData.append("access_key", access_key);
     formData.append("category", category);
 
