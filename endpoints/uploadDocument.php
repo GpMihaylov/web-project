@@ -20,7 +20,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                $real_location = './upload/'.$file_id.'.'.$file_extension;
 
                $uploadedDocument = new UploadedDocument($filename, $username, $real_location, $_POST['category'],
-               0, 0, $_POST['access_key'], "low");
+               0, 0, $_POST['access_key'], "low", "New");
                echo json_encode((new DataBaseConnection())->insertUploadedDocument($uploadedDocument)->toArray());
 
                if(!move_uploaded_file($_FILES['file']['tmp_name'], $location)){

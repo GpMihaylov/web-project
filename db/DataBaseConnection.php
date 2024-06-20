@@ -71,9 +71,9 @@ class DataBaseConnection {
 
         $insertStatement = $this->connection->prepare("
             INSERT INTO " . "uploadeddocument" . " (file_name, user, location, category, archived,
-            times_downloaded, access_key, document_priority)
+            times_downloaded, access_key, document_priority, status)
             VALUES (:file_name, :user, :location, :category, :archived,
-            :times_downloaded, :access_key, :document_priority)
+            :times_downloaded, :access_key, :document_priority, :status)
         ");
 
         $insertSuccessful = $insertStatement->execute([
@@ -85,6 +85,7 @@ class DataBaseConnection {
             'times_downloaded' => $document->getTimes_downloaded(),
             'access_key' => $document->getAccess_key(),
             'document_priority' => $document->getDocument_priority(),
+            'status' => $document->getStatus()
         ]);
 
         if ($insertSuccessful) {
@@ -95,9 +96,9 @@ class DataBaseConnection {
     }
 
     public function getUploadedDocumentsByUsername($username) {
-
+//todo find a way to order well
         $selectStatement = $this->connection->prepare("
-            SELECT * FROM " . "uploadeddocument" . " WHERE user = :username AND archived = false ORDER BY document_priority, category;");
+            SELECT * FROM " . "uploadeddocument" . " WHERE user = :username AND archived = false ORDER BY document_priority, category, status;");
 
         $selectStatement->execute(['username' => $username]);
 
@@ -167,8 +168,8 @@ class DataBaseConnection {
     
 
     public function getAllUploadedDocuments() {
-
-        $selectStatement = $this->connection->prepare("SELECT * FROM uploadeddocument ORDER BY archived,document_priority;");
+//todo ordering
+        $selectStatement = $this->connection->prepare("SELECT * FROM uploadeddocument ORDER BY archived,document_priority,status;");
 
         $selectStatement->execute();
 
@@ -209,7 +210,19 @@ class DataBaseConnection {
         }
     }
 
+    public function changeDocumentStatus($status, $file_name, $username) {
+        $updateStatement = $this->connection->prepare("
+        UPDATE `uploadeddocument` SET `status` = :status WHERE `uploadeddocument`.`file_name` = :file_name 
+        AND `uploadeddocument`.`user` = :username;");
 
+        $updateStatement->execute(['status' => $status, 'username' => $username, 'file_name' => $file_name]);
+
+        if($updateStatement){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public function archiveDocument($file_name, $username) {
         $updateStatement = $this->connection->prepare("
@@ -241,9 +254,9 @@ class DataBaseConnection {
     }
 
     public function getUploadedDocumentsByCategory($category) {
-
+//todo ordering
             $selectStatement = $this->connection->prepare("
-                SELECT * FROM " . "uploadeddocument" . " WHERE category = :category ORDER BY archived,document_priority;");
+                SELECT * FROM " . "uploadeddocument" . " WHERE category = :category ORDER BY archived,document_priority, status;");
 
             $selectStatement->execute(['category' => $category]);
 
