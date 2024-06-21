@@ -16,6 +16,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                $file_id = uniqid();
 
+               //todo create dir if not exist
                $location = '../upload/'.$file_id.'.'.$file_extension;
                $real_location = './upload/'.$file_id.'.'.$file_extension;
 

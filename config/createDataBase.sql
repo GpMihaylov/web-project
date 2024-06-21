@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `uploadeddocument` (
   `archived` tinyint(1) NOT NULL,
   `times_downloaded` int(11) NOT NULL,
   `access_key` text NOT NULL,
-  `document_priority` text NOT NULL
+  `document_priority` text NOT NULL,
   `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

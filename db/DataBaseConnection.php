@@ -169,7 +169,7 @@ class DataBaseConnection {
 
     public function getAllUploadedDocuments() {
 //todo ordering
-        $selectStatement = $this->connection->prepare("SELECT * FROM uploadeddocument ORDER BY archived,document_priority,status;");
+        $selectStatement = $this->connection->prepare("SELECT * FROM uploadeddocument ORDER BY archived,document_priority;");
 
         $selectStatement->execute();
 
