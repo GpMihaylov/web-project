@@ -196,15 +196,6 @@ class UploadedDocument {
         const status_div = document.createElement('div');
         status_div.classList.add("button-holder");
 
-        // Status Dropdown
-        const status_dropdown = document.createElement('select');
-        status_dropdown.classList.add("status-dropdown");
-        status_dropdown.innerHTML = `
-            <option value="New">New</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Completed">Completed</option>`;
-        const status = status_dropdown.value;
-
         const status_button = document.createElement('button');
         status_button.classList.add("status-button");
 
@@ -212,14 +203,39 @@ class UploadedDocument {
         status_img.setAttribute('src', 'images/status.png');
         status_button.appendChild(status_img);
         status_button.setAttribute('title', "Задай статус")
-        status_button.addEventListener("click", () => {
-            const status = status_dropdown.value;
-            changeStatus(this.file_name, this.user, status);
+
+        const status_dropdown = document.createElement('div');
+        status_dropdown.classList.add('dropdown-menu');
+        status_dropdown.style.display = 'none';
+
+        const option1 = document.createElement('div');
+        option1.classList.add('dropdown-option');
+        option1.textContent = 'Одобрено';
+        option1.addEventListener("click", changeStatus.bind(null, this.file_name, this.user, 'Одобрено'));
+
+        status_dropdown.style.display = 'none';
+        status_dropdown.appendChild(option1);
+
+        const option2 = document.createElement('div');
+        option2.classList.add('dropdown-option');
+        option2.textContent = 'Отхвърлено';
+        option2.addEventListener("click", changeStatus.bind(null, this.file_name, this.user, 'Отхвърлено'));
+        
+        status_dropdown.style.display = 'none';
+        status_dropdown.appendChild(option2);
+
+        status_button.addEventListener('click', function (event) {
+            event.stopPropagation();
+            if (status_dropdown.style.display === 'none') {
+                status_dropdown.style.display = 'block';
+            } else {
+                status_dropdown.style.display = 'none';
+            }
         });
 
-        status_div.appendChild(status_dropdown);
         status_div.appendChild(status_button);
         document_div.appendChild(status_div);
+        status_div.appendChild(status_dropdown);
 
 
         return document_div;

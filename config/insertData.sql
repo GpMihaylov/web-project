@@ -37,13 +37,13 @@ INSERT INTO `user` (`email`, `salt`, `password`, `is_admin`) VALUES
 --
 
 INSERT INTO `uploadeddocument` (`file_name`, `user`, `location`, `category`, `archived`, `times_downloaded`, `access_key`, `document_priority`, `status`) VALUES
-('document1.txt', 'georgi@gmail.com', './upload/66659e5c99cff.txt', 'OtdelStudenti', 0, 0, '9jjxdvovdptlw364w9xh', 'low', 'New'),
-('document2.txt', 'georgi@gmail.com', './upload/6665a8ca8c17a.txt', 'Sesiq', 0, 0, 'tapsleqw0phpuafccqi5', 'low', 'New'),
-('document3.txt', 'georgi@gmail.com', './upload/6665a8e851861.txt', 'Sesiq', 0, 0, 'r5dqzrn8xomatxkcufqlqo', 'low', 'New'),
-('document4.txt', 'georgi@gmail.com', './upload/6665a90295e14.txt', 'KandidatStudenti', 0, 0, '1q9qjyv119tlkak4w5vzwj', 'low', 'New'),
-('document5.txt', 'georgi@gmail.com', './upload/6665ca12cd3c3.txt', 'UchebenOtdel', 0, 0, 'rahynwv0wjf7cuehdtsy4e', 'low', 'New'),
-('document6.txt', 'georgi@gmail.com', './upload/6665ca3256e6f.txt', 'NoCategory', 0, 0, 'yy94s4h2d3csew4i4grrg', 'high', 'New'),
-('document7.txt', 'georgi@gmail.com', './upload/6665ca7c24ca6.txt', 'OtdelStudenti', 0, 0, 'gx0zxhyadb7sal5p1bek6', 'low', 'New');
+('document1.txt', 'georgi@gmail.com', './upload/66659e5c99cff.txt', 'OtdelStudenti', 0, 0, '9jjxdvovdptlw364w9xh', 'low', 'Нов'),
+('document2.txt', 'georgi@gmail.com', './upload/6665a8ca8c17a.txt', 'Sesiq', 0, 0, 'tapsleqw0phpuafccqi5', 'low', 'Нов'),
+('document3.txt', 'georgi@gmail.com', './upload/6665a8e851861.txt', 'Sesiq', 0, 0, 'r5dqzrn8xomatxkcufqlqo', 'low', 'Нов'),
+('document4.txt', 'georgi@gmail.com', './upload/6665a90295e14.txt', 'KandidatStudenti', 0, 0, '1q9qjyv119tlkak4w5vzwj', 'low', 'Нов'),
+('document5.txt', 'georgi@gmail.com', './upload/6665ca12cd3c3.txt', 'UchebenOtdel', 0, 0, 'rahynwv0wjf7cuehdtsy4e', 'low', 'Нов'),
+('document6.txt', 'georgi@gmail.com', './upload/6665ca3256e6f.txt', 'NoCategory', 0, 0, 'yy94s4h2d3csew4i4grrg', 'high', 'Нов'),
+('document7.txt', 'georgi@gmail.com', './upload/6665ca7c24ca6.txt', 'OtdelStudenti', 0, 0, 'gx0zxhyadb7sal5p1bek6', 'low', 'Нов');
 
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
