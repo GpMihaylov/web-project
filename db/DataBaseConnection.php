@@ -259,6 +259,28 @@ class DataBaseConnection {
             } else {
                 throw new Exception("db error");
             }
+    }
+
+    public function changeCategory($file_name, $username, $new_category) {
+        $updateStatement = $this->connection->prepare("
+        UPDATE `uploadeddocument` SET `category` = :new_category 
+        WHERE `uploadeddocument`.`file_name` = :file_name 
+        AND `uploadeddocument`.`user` = :username;");
+
+        $result = $updateStatement->execute([
+            'new_category' => $new_category,
+            'file_name' => $file_name,
+            'username' => $username
+        ]);
+
+        if($result){
+            return true;
+        }else{
+            return false;
         }
+    }
+
+    
+
 
 }

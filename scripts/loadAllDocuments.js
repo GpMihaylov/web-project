@@ -201,6 +201,74 @@ class UploadedDocument {
         download_div.appendChild(download_button);
         document_div.appendChild(download_div);
 
+        //secоnd row left button
+        const forward_div = document.createElement('div');
+        forward_div.classList.add("button-holder");
+
+        const forward_button = document.createElement('button');
+        forward_button.classList.add("forward-button");
+
+        var forward_img = document.createElement('img');
+        forward_img.setAttribute('src', 'images/forward.png');
+        forward_button.appendChild(forward_img);
+        forward_button.setAttribute('title', "Препрати")
+
+
+
+        // Падащо меню
+        const dropdown_menu = document.createElement('div');
+        dropdown_menu.classList.add('dropdown-menu');
+        dropdown_menu.style.display = 'none';
+
+
+        const option1 = document.createElement('div');
+        option1.classList.add('dropdown-option');
+        option1.textContent = 'Отдел студенти';
+        option1.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'OtdelStudenti'));
+        dropdown_menu.style.display = 'none';
+        dropdown_menu.appendChild(option1);
+
+        const option2 = document.createElement('div');
+        option2.classList.add('dropdown-option');
+        option2.textContent = 'Учебен отдел';
+        option2.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'UchebenOtdel'));
+        dropdown_menu.style.display = 'none';
+        dropdown_menu.appendChild(option2);
+
+        const option3 = document.createElement('div');
+        option3.classList.add('dropdown-option');
+        option3.textContent = 'Кандидат-студенти';
+        option3.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'KandidatStudenti'));
+        dropdown_menu.style.display = 'none';
+        dropdown_menu.appendChild(option3);
+
+        const option4 = document.createElement('div');
+        option4.classList.add('dropdown-option');
+        option4.textContent = 'Сесия';
+        option4.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'Sesiq'));
+        dropdown_menu.style.display = 'none';
+        dropdown_menu.appendChild(option4);
+
+        forward_button.addEventListener('click', function (event) {
+            event.stopPropagation();
+            if (dropdown_menu.style.display === 'none') {
+                dropdown_menu.style.display = 'block';
+            } else {
+                dropdown_menu.style.display = 'none';
+            }
+        });
+
+
+        forward_div.appendChild(forward_button);
+        document_div.appendChild(forward_div);
+        document_div.appendChild(dropdown_menu);
+
+        document.addEventListener('click', function (event) {
+            if (!dropdown_menu.contains(event.target) && !forward_button.contains(event.target)) {
+                dropdown_menu.classList.add('hide');
+            }
+        });
+
         return document_div;
     }
 
@@ -356,6 +424,38 @@ function downloadFileAsAdmin(file_name, username, location, event) {
             displayError("Възникна грешка!");
         });
 
+}
+
+function forwardTo(file_name, username, new_category, event) {
+    clearAllMessages();
+
+    let formData = new FormData();
+    formData.append("file_name", file_name);
+    formData.append("username", username);
+    formData.append("new_category", new_category);
+
+    fetch('./endpoints/forward.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("");
+            }
+        })
+        .then(function (response) {
+            if (response['success']) {
+                displaySuccess("Файлът е препратен успешно!");
+            } else {
+                displayError("Проблем с препращането на файла!");
+            }
+
+        })
+        .catch(function (error) {
+            displayError("Възникна грешка!");
+        });
 }
 
 function showByCategory(category) {
