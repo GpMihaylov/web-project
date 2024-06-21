@@ -71,9 +71,9 @@ class DataBaseConnection {
 
         $insertStatement = $this->connection->prepare("
             INSERT INTO " . "uploadeddocument" . " (file_name, user, location, category, archived,
-            times_downloaded, access_key, document_priority)
+            times_downloaded, access_key, document_priority, upload_date)
             VALUES (:file_name, :user, :location, :category, :archived,
-            :times_downloaded, :access_key, :document_priority)
+            :times_downloaded, :access_key, :document_priority, :upload_date)
         ");
 
         $insertSuccessful = $insertStatement->execute([
@@ -85,6 +85,7 @@ class DataBaseConnection {
             'times_downloaded' => $document->getTimes_downloaded(),
             'access_key' => $document->getAccess_key(),
             'document_priority' => $document->getDocument_priority(),
+            'upload_date' => $document->getUpload_date()
         ]);
 
         if ($insertSuccessful) {

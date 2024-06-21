@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 class UploadedDocument {
     constructor({ file_name, user, location, category, archived,
-        times_downloaded, access_key, document_priority }) {
+        times_downloaded, access_key, document_priority, upload_date }) {
         this.file_name = file_name;
         this.user = user;
         this.location = location;
@@ -27,6 +27,7 @@ class UploadedDocument {
         this.times_downloaded = times_downloaded;
         this.access_key = access_key;
         this.document_priority = document_priority;
+        this.upload_date = upload_date;
     }
 
     createHTTMLDocumentElement() {
@@ -106,6 +107,30 @@ class UploadedDocument {
         const document_priority_text = document.createTextNode(`${this.document_priority}`);
         document_priority_div.appendChild(document_priority_text);
         document_content_div.appendChild(document_priority_div);
+
+        // Upload date row
+        const document_upload_date_label_div = document.createElement('div');
+        document_upload_date_label_div.classList.add("label");
+        const upload_date_label_text = document.createTextNode("Upload date");
+        document_upload_date_label_div.appendChild(upload_date_label_text);
+        document_content_div.appendChild(document_upload_date_label_div);
+
+        const document_upload_date_div = document.createElement('div');
+        document_upload_date_div.classList.add("content");
+
+        const upload_date = new Date(this.upload_date);
+        const options = {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false,
+            timeZone: 'Europe/Sofia'
+        };
+        const upload_date_text = document.createTextNode(upload_date.toLocaleString('bg-BG', options));
+        document_upload_date_div.appendChild(upload_date_text);
+        document_content_div.appendChild(document_upload_date_div);
 
 
         //Is Archived row
