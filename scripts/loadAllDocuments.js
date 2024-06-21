@@ -215,39 +215,42 @@ class UploadedDocument {
 
 
 
-        // Падащо меню
         const dropdown_menu = document.createElement('div');
         dropdown_menu.classList.add('dropdown-menu');
         dropdown_menu.style.display = 'none';
 
-
-        const option1 = document.createElement('div');
-        option1.classList.add('dropdown-option');
-        option1.textContent = 'Отдел студенти';
-        option1.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'OtdelStudenti'));
-        dropdown_menu.style.display = 'none';
-        dropdown_menu.appendChild(option1);
-
-        const option2 = document.createElement('div');
-        option2.classList.add('dropdown-option');
-        option2.textContent = 'Учебен отдел';
-        option2.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'UchebenOtdel'));
-        dropdown_menu.style.display = 'none';
-        dropdown_menu.appendChild(option2);
-
-        const option3 = document.createElement('div');
-        option3.classList.add('dropdown-option');
-        option3.textContent = 'Кандидат-студенти';
-        option3.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'KandidatStudenti'));
-        dropdown_menu.style.display = 'none';
-        dropdown_menu.appendChild(option3);
-
-        const option4 = document.createElement('div');
-        option4.classList.add('dropdown-option');
-        option4.textContent = 'Сесия';
-        option4.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'Sesiq'));
-        dropdown_menu.style.display = 'none';
-        dropdown_menu.appendChild(option4);
+        if (`${this.category}` != 'OtdelStudenti') {
+            const option1 = document.createElement('div');
+            option1.classList.add('dropdown-option');
+            option1.textContent = 'Отдел студенти';
+            option1.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'OtdelStudenti'));
+            dropdown_menu.style.display = 'none';
+            dropdown_menu.appendChild(option1);
+        }
+        if (`${this.category}` != 'UchebenOtdel') {
+            const option2 = document.createElement('div');
+            option2.classList.add('dropdown-option');
+            option2.textContent = 'Учебен отдел';
+            option2.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'UchebenOtdel'));
+            dropdown_menu.style.display = 'none';
+            dropdown_menu.appendChild(option2);
+        }
+        if (`${this.category}` != 'KandidatStudenti') {
+            const option3 = document.createElement('div');
+            option3.classList.add('dropdown-option');
+            option3.textContent = 'Кандидат-студенти';
+            option3.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'KandidatStudenti'));
+            dropdown_menu.style.display = 'none';
+            dropdown_menu.appendChild(option3);
+        }
+        if (`${this.category}` != 'Sesiq') {
+            const option4 = document.createElement('div');
+            option4.classList.add('dropdown-option');
+            option4.textContent = 'Сесия';
+            option4.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'Sesiq'));
+            dropdown_menu.style.display = 'none';
+            dropdown_menu.appendChild(option4);
+        }
 
         forward_button.addEventListener('click', function (event) {
             event.stopPropagation();
