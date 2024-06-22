@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 class UploadedDocument {
     constructor({ file_name, user, location, category, archived,
-        times_downloaded, access_key, document_priority, status }) {
+        times_downloaded, access_key, document_priority, status, upload_date }) {
         this.file_name = file_name;
         this.user = user;
         this.location = location;
@@ -28,6 +28,7 @@ class UploadedDocument {
         this.access_key = access_key;
         this.document_priority = document_priority;
         this.status = status;
+        this.upload_date = upload_date;
     }
 
     createHTTMLDocumentElement() {
@@ -107,6 +108,30 @@ class UploadedDocument {
         const document_priority_text = document.createTextNode(`${this.document_priority}`);
         document_priority_div.appendChild(document_priority_text);
         document_content_div.appendChild(document_priority_div);
+
+        // Upload date row
+        const document_upload_date_label_div = document.createElement('div');
+        document_upload_date_label_div.classList.add("label");
+        const upload_date_label_text = document.createTextNode("Upload date");
+        document_upload_date_label_div.appendChild(upload_date_label_text);
+        document_content_div.appendChild(document_upload_date_label_div);
+
+        const document_upload_date_div = document.createElement('div');
+        document_upload_date_div.classList.add("content");
+
+        const upload_date = new Date(this.upload_date);
+        const options = {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false,
+            timeZone: 'Europe/Sofia'
+        };
+        const upload_date_text = document.createTextNode(upload_date.toLocaleString('bg-BG', options));
+        document_upload_date_div.appendChild(upload_date_text);
+        document_content_div.appendChild(document_upload_date_div);
 
 
         //Is Archived row
@@ -192,6 +217,77 @@ class UploadedDocument {
         document_div.appendChild(download_div);
 
 
+        //secоnd row left button
+        const forward_div = document.createElement('div');
+        forward_div.classList.add("button-holder");
+
+        const forward_button = document.createElement('button');
+        forward_button.classList.add("forward-button");
+
+        var forward_img = document.createElement('img');
+        forward_img.setAttribute('src', 'images/forward.png');
+        forward_button.appendChild(forward_img);
+        forward_button.setAttribute('title', "Препрати")
+
+
+
+        const dropdown_menu = document.createElement('div');
+        dropdown_menu.classList.add('dropdown-menu');
+        dropdown_menu.style.display = 'none';
+
+        if (`${this.category}` != 'OtdelStudenti') {
+            const option1 = document.createElement('div');
+            option1.classList.add('dropdown-option');
+            option1.textContent = 'Отдел студенти';
+            option1.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'OtdelStudenti'));
+            dropdown_menu.style.display = 'none';
+            dropdown_menu.appendChild(option1);
+        }
+        if (`${this.category}` != 'UchebenOtdel') {
+            const option2 = document.createElement('div');
+            option2.classList.add('dropdown-option');
+            option2.textContent = 'Учебен отдел';
+            option2.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'UchebenOtdel'));
+            dropdown_menu.style.display = 'none';
+            dropdown_menu.appendChild(option2);
+        }
+        if (`${this.category}` != 'KandidatStudenti') {
+            const option3 = document.createElement('div');
+            option3.classList.add('dropdown-option');
+            option3.textContent = 'Кандидат-студенти';
+            option3.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'KandidatStudenti'));
+            dropdown_menu.style.display = 'none';
+            dropdown_menu.appendChild(option3);
+        }
+        if (`${this.category}` != 'Sesiq') {
+            const option4 = document.createElement('div');
+            option4.classList.add('dropdown-option');
+            option4.textContent = 'Сесия';
+            option4.addEventListener("click", forwardTo.bind(null, this.file_name, this.user, 'Sesiq'));
+            dropdown_menu.style.display = 'none';
+            dropdown_menu.appendChild(option4);
+        }
+
+        forward_button.addEventListener('click', function (event) {
+            event.stopPropagation();
+            if (dropdown_menu.style.display === 'none') {
+                dropdown_menu.style.display = 'block';
+            } else {
+                dropdown_menu.style.display = 'none';
+            }
+        });
+
+
+        forward_div.appendChild(forward_button);
+        document_div.appendChild(forward_div);
+        document_div.appendChild(dropdown_menu);
+
+        document.addEventListener('click', function (event) {
+            if (!dropdown_menu.contains(event.target) && !forward_button.contains(event.target)) {
+                dropdown_menu.classList.add('hide');
+            }
+        });
+      
         //status button
         const status_div = document.createElement('div');
         status_div.classList.add("button-holder");
@@ -236,7 +332,6 @@ class UploadedDocument {
         status_div.appendChild(status_button);
         document_div.appendChild(status_div);
         status_div.appendChild(status_dropdown);
-
 
         return document_div;
     }
@@ -398,9 +493,7 @@ function downloadFileAsAdmin(file_name, username, location, event) {
 
 function changeStatus(file_name, username, status) {
     clearAllMessages();
-    
-    console.log(`Changing status for file: ${file_name}, user: ${username}, status: ${status}`);
-    
+
     let formData = new FormData();
     formData.append("file_name", file_name);
     formData.append("username", username);
@@ -411,7 +504,6 @@ function changeStatus(file_name, username, status) {
         body: formData
     })
         .then(response => {
-            console.log("Response status:", response.status);
             if (response.ok) {
                 return response.json();
             } else {
@@ -419,15 +511,45 @@ function changeStatus(file_name, username, status) {
             }
         })
         .then(function (response) {
-            console.log("Response JSON:", response);
             if (response['success']) {
                 displaySuccess("Статусът е променен успешно!");
             } else {
                 displayError("Проблем с промяната на статуса!");
             }
-
         })
         .catch(function (error) { 
+            displayError("Възникна грешка!");
+        });
+}
+
+function forwardTo(file_name, username, new_category, event) {
+    clearAllMessages();
+
+    let formData = new FormData();
+    formData.append("file_name", file_name);
+    formData.append("username", username);
+    formData.append("new_category", new_category);
+
+    fetch('./endpoints/forward.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("");
+            }
+        })
+        .then(function (response) {
+            if (response['success']) {
+                displaySuccess("Файлът е препратен успешно!");
+            } else {
+                displayError("Проблем с препращането на файла!");
+            }
+
+        })
+        .catch(function (error) {
             displayError("Възникна грешка!");
         });
 }
