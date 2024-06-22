@@ -97,7 +97,6 @@ class DataBaseConnection {
     }
 
     public function getUploadedDocumentsByUsername($username) {
-//todo find a way to order well
         $selectStatement = $this->connection->prepare("
             SELECT * FROM " . "uploadeddocument" . " WHERE user = :username AND archived = false ORDER BY document_priority, category, status;");
 
@@ -169,7 +168,6 @@ class DataBaseConnection {
     
 
     public function getAllUploadedDocuments() {
-//todo ordering
         $selectStatement = $this->connection->prepare("SELECT * FROM uploadeddocument ORDER BY archived,document_priority;");
 
         $selectStatement->execute();
@@ -255,7 +253,6 @@ class DataBaseConnection {
     }
 
     public function getUploadedDocumentsByCategory($category) {
-//todo ordering
             $selectStatement = $this->connection->prepare("
                 SELECT * FROM " . "uploadeddocument" . " WHERE category = :category ORDER BY archived,document_priority, status;");
 
