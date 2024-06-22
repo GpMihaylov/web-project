@@ -11,8 +11,17 @@ switch ($_SERVER['REQUEST_METHOD']) {
           $file_name = $_POST['file_name'];
           $new_category = $_POST['new_category'];
   
-          $result = (new DataBaseConnection())->changeCategory($file_name, $username, $new_category);
-          echo json_encode(['success' => $result]);
+          $databaseConnection = new DataBaseConnection();
+
+          $updateStatusResult = $databaseConnection->changeDocumentStatus('В процес', $file_name, $username);
+          $result = $databaseConnection->changeCategory($file_name, $username, $new_category);
+
+          if ($updateStatusResult && $result) {
+               echo json_encode(['success' => true]);
+          } else {
+               echo json_encode(['success' => false]);
+          }
+          // echo json_encode(['success' => $result]);
           break;
     }
           
