@@ -71,9 +71,9 @@ class DataBaseConnection {
 
         $insertStatement = $this->connection->prepare("
             INSERT INTO " . "uploadeddocument" . " (file_name, user, location, category, archived,
-            times_downloaded, access_key, document_priority, status, upload_date)
+            times_downloaded, access_key, document_priority, status, upload_date, change_date)
             VALUES (:file_name, :user, :location, :category, :archived,
-            :times_downloaded, :access_key, :document_priority, :status, :upload_date)
+            :times_downloaded, :access_key, :document_priority, :status, :upload_date, :change_date)
         ");
 
         $insertSuccessful = $insertStatement->execute([
@@ -86,7 +86,8 @@ class DataBaseConnection {
             'access_key' => $document->getAccess_key(),
             'document_priority' => $document->getDocument_priority(),
             'status' => $document->getStatus(),
-            'upload_date' => $document->getUpload_date()
+            'upload_date' => $document->getUpload_date(),
+            'change_date' => $document->getChange_date()
         ]);
 
         if ($insertSuccessful) {
@@ -197,7 +198,7 @@ class DataBaseConnection {
 
     public function increaseDownloadDocumentField($file_name, $username) {
         $updateStatement = $this->connection->prepare("
-        UPDATE `uploadeddocument` SET `times_downloaded` = `times_downloaded` + 1 WHERE `uploadeddocument`.`file_name` = :file_name 
+        UPDATE `uploadeddocument` SET `times_downloaded` = `times_downloaded` + 1, `change_date` = NOW() WHERE `uploadeddocument`.`file_name` = :file_name 
         AND `uploadeddocument`.`user` = :username;");
 
         $updateStatement->execute(['username' => $username, 'file_name' => $file_name]);
@@ -211,7 +212,7 @@ class DataBaseConnection {
 
     public function changeDocumentStatus($status, $file_name, $username) {
         $updateStatement = $this->connection->prepare("
-        UPDATE `uploadeddocument` SET `status` = :status WHERE `uploadeddocument`.`file_name` = :file_name 
+        UPDATE `uploadeddocument` SET `status` = :status, `change_date` = NOW() WHERE `uploadeddocument`.`file_name` = :file_name 
         AND `uploadeddocument`.`user` = :username;");
 
         $updateStatement->execute(['status' => $status, 'username' => $username, 'file_name' => $file_name]);
@@ -273,7 +274,7 @@ class DataBaseConnection {
 
     public function changeCategory($file_name, $username, $new_category) {
         $updateStatement = $this->connection->prepare("
-        UPDATE `uploadeddocument` SET `category` = :new_category 
+        UPDATE `uploadeddocument` SET `category` = :new_category, `change_date` = NOW()
         WHERE `uploadeddocument`.`file_name` = :file_name 
         AND `uploadeddocument`.`user` = :username;");
 

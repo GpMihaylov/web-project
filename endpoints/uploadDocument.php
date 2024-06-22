@@ -25,7 +25,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                $current_date = date('Y-m-d H:i:s');
 
                $uploadedDocument = new UploadedDocument($filename, $username, $real_location, $_POST['category'],
-               0, 0, $_POST['access_key'], "low", "Нов", $current_date);
+               0, 0, $_POST['access_key'], "low", "Нов", $current_date, $current_date);
 
                echo json_encode((new DataBaseConnection())->insertUploadedDocument($uploadedDocument)->toArray());
 

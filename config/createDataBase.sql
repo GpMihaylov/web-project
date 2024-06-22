@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS `uploadeddocument` (
   `access_key` text NOT NULL,
   `document_priority` text NOT NULL,
   `status` text NOT NULL,
-  `upload_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `upload_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `change_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 

@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 class UploadedDocument {
     constructor({ file_name, user, location, category, archived,
-        times_downloaded, access_key, document_priority, status, upload_date }) {
+        times_downloaded, access_key, document_priority, status, upload_date, change_date }) {
         this.file_name = file_name;
         this.user = user;
         this.location = location;
@@ -29,6 +29,7 @@ class UploadedDocument {
         this.document_priority = document_priority;
         this.status = status;
         this.upload_date = upload_date;
+        this.change_date = change_date;
     }
 
     createHTTMLDocumentElement() {
@@ -133,6 +134,21 @@ class UploadedDocument {
         document_upload_date_div.appendChild(upload_date_text);
         document_content_div.appendChild(document_upload_date_div);
 
+        // last change date row
+        const document_last_change_label_div = document.createElement('div');
+        document_last_change_label_div.classList.add("label");
+        const last_change_label_text = document.createTextNode("Last change");
+        document_last_change_label_div.appendChild(last_change_label_text);
+        document_content_div.appendChild(document_last_change_label_div);
+
+        const document_last_change_div = document.createElement('div');
+        document_last_change_div.classList.add("content");
+
+        const change_date = new Date(this.change_date);
+        const last_change_text = document.createTextNode(change_date.toLocaleString('bg-BG', options));
+        document_last_change_div.appendChild(last_change_text);
+        document_content_div.appendChild(document_last_change_div);
+
 
         //Is Archived row
         const document_archived_label_div = document.createElement('div');
@@ -143,7 +159,6 @@ class UploadedDocument {
 
         const document_archived_div = document.createElement('div');
         document_archived_div.classList.add("content");
-        document_archived_div.classList.add("bottom-right");
         var document_archived_text;
         if (`${this.archived}` == 1) {
             document_archived_text = document.createTextNode("yes");
@@ -217,7 +232,7 @@ class UploadedDocument {
         document_div.appendChild(download_div);
 
 
-        //send row left button
+        //send button
         const forward_div = document.createElement('div');
         forward_div.classList.add("button-holder");
 
@@ -280,13 +295,8 @@ class UploadedDocument {
 
         forward_div.appendChild(forward_button);
         document_div.appendChild(forward_div);
-        document_div.appendChild(dropdown_menu);
+        forward_div.appendChild(dropdown_menu);
 
-        document.addEventListener('click', function (event) {
-            if (!dropdown_menu.contains(event.target) && !forward_button.contains(event.target)) {
-                dropdown_menu.classList.add('hide');
-            }
-        });
       
         //status button
         const status_div = document.createElement('div');

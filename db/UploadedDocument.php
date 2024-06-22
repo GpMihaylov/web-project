@@ -12,9 +12,10 @@ class UploadedDocument {
     private $document_priority;
     private $status;
     private $upload_date;
+    private $change_date;
 
     public function __construct($file_name, $user, $location, $category, $archived,
-                                $times_downloaded, $access_key, $document_priority, $status, $upload_date) {
+                                $times_downloaded, $access_key, $document_priority, $status, $upload_date, $change_date) {
 
         $this->file_name = $file_name;
         $this->user = $user;
@@ -26,6 +27,7 @@ class UploadedDocument {
         $this->document_priority = $document_priority;
         $this->status = $status;
         $this->upload_date = $upload_date;
+        $this->change_date = $change_date;
     }
 
     public function getFile_name() {
@@ -68,9 +70,13 @@ class UploadedDocument {
         return $this->upload_date;
     }
 
+    public function getChange_date() {
+        return $this->change_date;
+    }
+
     public static function createUploadedDocumentFromDbRow($row) {
         return new UploadedDocument($row['file_name'], $row['user'], $row['location'], $row['category'],
-        $row['archived'], $row['times_downloaded'], $row['access_key'], $row['document_priority'], $row['status'], $row['upload_date']);
+        $row['archived'], $row['times_downloaded'], $row['access_key'], $row['document_priority'], $row['status'], $row['upload_date'], $row['change_date']);
     }
 
     public function toArray(): array {
@@ -84,7 +90,8 @@ class UploadedDocument {
                     'access_key' => $this->getAccess_key(),
                     'document_priority' => $this->getDocument_priority(),
                     'status' => $this->getStatus(),
-                    'upload_date' => $this->getUpload_date()
+                    'upload_date' => $this->getUpload_date(),
+                    'change_date' => $this->getChange_date()
                 ];
     }
 }
