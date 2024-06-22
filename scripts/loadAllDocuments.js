@@ -372,6 +372,7 @@ function downloadFileAsAdmin(file_name, username, location, event) {
     })
         .then(response => {
             if (response.ok) {
+                displaySuccess("Файлът е изтеглен успешно! Промяна на статуса...");
                 return response.json();
             } else {
                 throw new Error("");

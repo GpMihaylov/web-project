@@ -9,9 +9,17 @@ switch ($_SERVER['REQUEST_METHOD']) {
           session_start();
           $username = $_POST['username'];
           $file_name = $_POST['file_name'];
+
+          $databaseConnection = new DataBaseConnection();
   
-          $result = (new DataBaseConnection())->increaseDownloadDocumentField($file_name, $username);
-          echo json_encode(['success' => $result]);
+          $updateStatusResult = $databaseConnection->changeDocumentStatus('В процес', $file_name, $username);
+
+          $increaseDownloadResult = $databaseConnection->increaseDownloadDocumentField($file_name, $username);
+          if ($updateStatusResult && $increaseDownloadResult) {
+               echo json_encode(['success' => true]);
+          } else {
+               echo json_encode(['success' => false]);
+          }
           break;
     }
           
