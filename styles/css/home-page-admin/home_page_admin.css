@@ -61,3 +61,38 @@
     .category-button:hover {
         background-color: #ddd;
     }
+
+
+    .status-dropdown {
+        font-size: 16px; /* Adjust font size to match other elements */
+        padding: 8px; /* Padding for dropdown */
+        margin-right: 10px;
+        border: 1px solid #ccc; /* Add border to dropdown */
+        border-radius: 4px; /* Rounded corners */
+        background-color: white; /* Background color */
+        color: black; /* Text color */
+        box-sizing: border-box; /* Include padding and border in width calculation */
+    }
+    
+    .status-dropdown:hover {
+        border-color: #007BFF; /* Change border color on hover */
+    }
+    
+    /* .status-button {
+        background-color: #007BFF; 
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-left: 10px; 
+        cursor: pointer;
+        border-radius: 4px; 
+    }
+    
+    .status-button:hover {
+        background-color: #0056b3; 
+    }
+     */

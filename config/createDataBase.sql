@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `uploadeddocument` (
   `times_downloaded` int(11) NOT NULL,
   `access_key` text NOT NULL,
   `document_priority` text NOT NULL,
+  `status` text NOT NULL,
   `upload_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

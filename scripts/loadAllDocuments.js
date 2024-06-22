@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 class UploadedDocument {
     constructor({ file_name, user, location, category, archived,
-        times_downloaded, access_key, document_priority, upload_date }) {
+        times_downloaded, access_key, document_priority, status, upload_date }) {
         this.file_name = file_name;
         this.user = user;
         this.location = location;
@@ -27,6 +27,7 @@ class UploadedDocument {
         this.times_downloaded = times_downloaded;
         this.access_key = access_key;
         this.document_priority = document_priority;
+        this.status = status;
         this.upload_date = upload_date;
     }
 
@@ -154,7 +155,21 @@ class UploadedDocument {
         document_content_div.appendChild(document_archived_div);
 
 
-        //left button
+        //Status row
+        const document_status_label_div = document.createElement('div');
+        document_status_label_div.classList.add("label");
+        const status_label_text = document.createTextNode("Status");
+        document_status_label_div.appendChild(status_label_text);
+        document_content_div.appendChild(document_status_label_div);
+
+        const document_status_div = document.createElement('div');
+        document_status_div.classList.add("content");
+        const document_status_text = document.createTextNode(`${this.status}`);
+        document_status_div.appendChild(document_status_text);
+        document_content_div.appendChild(document_status_div);
+
+
+        //archive button
         const archive_div = document.createElement('div');
         archive_div.classList.add("button-holder");
 
@@ -170,7 +185,7 @@ class UploadedDocument {
         document_div.appendChild(archive_div);
 
 
-        //middle button
+        //unarchive button
         const unarchive_div = document.createElement('div');
         unarchive_div.classList.add("button-holder");
 
@@ -186,7 +201,7 @@ class UploadedDocument {
         document_div.appendChild(unarchive_div);
 
 
-        //right button
+        //download button
         const download_div = document.createElement('div');
         download_div.classList.add("button-holder");
 
@@ -200,6 +215,7 @@ class UploadedDocument {
         download_button.addEventListener("click", downloadFileAsAdmin.bind(null, this.file_name, this.user, this.location));
         download_div.appendChild(download_button);
         document_div.appendChild(download_div);
+
 
         //secоnd row left button
         const forward_div = document.createElement('div');
@@ -271,6 +287,51 @@ class UploadedDocument {
                 dropdown_menu.classList.add('hide');
             }
         });
+      
+        //status button
+        const status_div = document.createElement('div');
+        status_div.classList.add("button-holder");
+
+        const status_button = document.createElement('button');
+        status_button.classList.add("status-button");
+
+        var status_img = document.createElement('img');
+        status_img.setAttribute('src', 'images/status.png');
+        status_button.appendChild(status_img);
+        status_button.setAttribute('title', "Задай статус")
+
+        const status_dropdown = document.createElement('div');
+        status_dropdown.classList.add('dropdown-menu');
+        status_dropdown.style.display = 'none';
+
+        const option1 = document.createElement('div');
+        option1.classList.add('dropdown-option');
+        option1.textContent = 'Одобрено';
+        option1.addEventListener("click", changeStatus.bind(null, this.file_name, this.user, 'Одобрено'));
+
+        status_dropdown.style.display = 'none';
+        status_dropdown.appendChild(option1);
+
+        const option2 = document.createElement('div');
+        option2.classList.add('dropdown-option');
+        option2.textContent = 'Отхвърлено';
+        option2.addEventListener("click", changeStatus.bind(null, this.file_name, this.user, 'Отхвърлено'));
+        
+        status_dropdown.style.display = 'none';
+        status_dropdown.appendChild(option2);
+
+        status_button.addEventListener('click', function (event) {
+            event.stopPropagation();
+            if (status_dropdown.style.display === 'none') {
+                status_dropdown.style.display = 'block';
+            } else {
+                status_dropdown.style.display = 'none';
+            }
+        });
+
+        status_div.appendChild(status_button);
+        document_div.appendChild(status_div);
+        status_div.appendChild(status_dropdown);
 
         return document_div;
     }
@@ -406,6 +467,7 @@ function downloadFileAsAdmin(file_name, username, location, event) {
     })
         .then(response => {
             if (response.ok) {
+                displaySuccess("Файлът е изтеглен успешно! Промяна на статуса...");
                 return response.json();
             } else {
                 throw new Error("");
@@ -427,6 +489,37 @@ function downloadFileAsAdmin(file_name, username, location, event) {
             displayError("Възникна грешка!");
         });
 
+}
+
+function changeStatus(file_name, username, status) {
+    clearAllMessages();
+
+    let formData = new FormData();
+    formData.append("file_name", file_name);
+    formData.append("username", username);
+    formData.append("status", status);
+
+    fetch('./endpoints/changeStatus.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("");
+            }
+        })
+        .then(function (response) {
+            if (response['success']) {
+                displaySuccess("Статусът е променен успешно!");
+            } else {
+                displayError("Проблем с промяната на статуса!");
+            }
+        })
+        .catch(function (error) { 
+            displayError("Възникна грешка!");
+        });
 }
 
 function forwardTo(file_name, username, new_category, event) {

@@ -10,10 +10,11 @@ class UploadedDocument {
     private $times_downloaded;
     private $access_key;
     private $document_priority;
+    private $status;
     private $upload_date;
 
     public function __construct($file_name, $user, $location, $category, $archived,
-                                $times_downloaded, $access_key, $document_priority, $upload_date) {
+                                $times_downloaded, $access_key, $document_priority, $status, $upload_date) {
 
         $this->file_name = $file_name;
         $this->user = $user;
@@ -23,6 +24,7 @@ class UploadedDocument {
         $this->times_downloaded = $times_downloaded;
         $this->access_key = $access_key;
         $this->document_priority = $document_priority;
+        $this->status = $status;
         $this->upload_date = $upload_date;
     }
 
@@ -58,13 +60,17 @@ class UploadedDocument {
         return $this->document_priority;
     }
 
+    public function getStatus() {
+        return $this->status;
+    }
+  
     public function getUpload_date() {
         return $this->upload_date;
     }
 
     public static function createUploadedDocumentFromDbRow($row) {
         return new UploadedDocument($row['file_name'], $row['user'], $row['location'], $row['category'],
-        $row['archived'], $row['times_downloaded'], $row['access_key'], $row['document_priority'], $row['upload_date']);
+        $row['archived'], $row['times_downloaded'], $row['access_key'], $row['document_priority'], $row['status'], $row['upload_date']);
     }
 
     public function toArray(): array {
@@ -77,6 +83,7 @@ class UploadedDocument {
                     'times_downloaded' => $this->getTimes_downloaded(),
                     'access_key' => $this->getAccess_key(),
                     'document_priority' => $this->getDocument_priority(),
+                    'status' => $this->getStatus()
                     'upload_date' => $this->getUpload_date()
                 ];
     }
