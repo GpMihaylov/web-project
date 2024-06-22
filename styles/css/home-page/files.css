@@ -46,12 +46,13 @@
 }
 
 .button-holder {
+    position: relative;
     display: inline;
     width: 30%;
     overflow: auto;
 }
 
-.priority-button, .delete-button, .download-button, .forward-button {
+.priority-button, .delete-button, .download-button, .forward-button, .status-button {
     width: 30%;
     margin-top: 3%;
     padding: 2% 12% 2% 12%;
@@ -59,7 +60,7 @@
     background-color: #d6d6d629;
 }
 
-    .priority-button:active, .delete-button:active, .download-button:active, .forward-button:active {
+    .priority-button:active, .delete-button:active, .download-button:active, .forward-button:active, .status-button:active {
         -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
         -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
         box-shadow: inset 0px 0px 5px #929292;
@@ -67,15 +68,20 @@
         border-radius: 3px;
     }
 
-    .priority-button:hover, .delete-button:hover, .download-button:hover, .forward-button:hover {
+    .priority-button:hover, .delete-button:hover, .download-button:hover, .forward-button:hover, .status-button:hover {
         border: 1px solid #aeaeae7d;
         border-radius: 3px;
     }
 
-.delete-button {
-    margin-left: 5%;
-    margin-right: 5%;
+.forward-button, .status-button {
+    margin-left: 13%;
+
 }
+
+    .delete-button {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 
 .documents-headline {
     color: #e0e0e0;
@@ -104,7 +110,11 @@
 }
 
 .dropdown-menu {
+    display: none;
     position: absolute;
+    top: 88%;
+    left: 0;
+    margin-left: 30%;
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);

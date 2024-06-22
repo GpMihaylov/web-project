@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 class UploadedDocument {
     constructor({ file_name, user, location, category, archived,
-        times_downloaded, access_key, document_priority, status, upload_date }) {
+        times_downloaded, access_key, document_priority, status, upload_date, change_date}) {
         this.file_name = file_name;
         this.user = user;
         this.location = location;
@@ -18,6 +18,7 @@ class UploadedDocument {
         this.document_priority = document_priority;
         this.status = status;
         this.upload_date = upload_date;
+        this.change_date = change_date;
     }
 
     createHTTMLDocumentElement() {
@@ -107,6 +108,21 @@ class UploadedDocument {
         const upload_date_text = document.createTextNode(upload_date.toLocaleString('bg-BG', options));
         document_upload_date_div.appendChild(upload_date_text);
         document_content_div.appendChild(document_upload_date_div);
+
+        // last change date row
+        const document_last_change_label_div = document.createElement('div');
+        document_last_change_label_div.classList.add("label");
+        const last_change_label_text = document.createTextNode("Last change");
+        document_last_change_label_div.appendChild(last_change_label_text);
+        document_content_div.appendChild(document_last_change_label_div);
+
+        const document_last_change_div = document.createElement('div');
+        document_last_change_div.classList.add("content");
+
+        const change_date = new Date(this.change_date);
+        const last_change_text = document.createTextNode(change_date.toLocaleString('bg-BG', options));
+        document_last_change_div.appendChild(last_change_text);
+        document_content_div.appendChild(document_last_change_div);
 
         //Status row
         const document_status_label_div = document.createElement('div');
