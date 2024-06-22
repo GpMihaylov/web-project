@@ -217,7 +217,7 @@ class UploadedDocument {
         document_div.appendChild(download_div);
 
 
-        //secоnd row left button
+        //send row left button
         const forward_div = document.createElement('div');
         forward_div.classList.add("button-holder");
 

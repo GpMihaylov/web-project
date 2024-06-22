@@ -83,7 +83,7 @@ class UploadedDocument {
                     'times_downloaded' => $this->getTimes_downloaded(),
                     'access_key' => $this->getAccess_key(),
                     'document_priority' => $this->getDocument_priority(),
-                    'status' => $this->getStatus()
+                    'status' => $this->getStatus(),
                     'upload_date' => $this->getUpload_date()
                 ];
     }

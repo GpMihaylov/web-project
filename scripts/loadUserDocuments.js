@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 class UploadedDocument {
     constructor({ file_name, user, location, category, archived,
-        times_downloaded, access_key, document_priority, upload_date }) {
+        times_downloaded, access_key, document_priority, status, upload_date }) {
         this.file_name = file_name;
         this.user = user;
         this.location = location;
@@ -16,6 +16,7 @@ class UploadedDocument {
         this.times_downloaded = times_downloaded;
         this.access_key = access_key;
         this.document_priority = document_priority;
+        this.status = status;
         this.upload_date = upload_date;
     }
 
@@ -107,7 +108,18 @@ class UploadedDocument {
         document_upload_date_div.appendChild(upload_date_text);
         document_content_div.appendChild(document_upload_date_div);
 
+        //Status row
+        const document_status_label_div = document.createElement('div');
+        document_status_label_div.classList.add("label");
+        const status_label_text = document.createTextNode("Status");
+        document_status_label_div.appendChild(status_label_text);
+        document_content_div.appendChild(document_status_label_div);
 
+        const document_status_div = document.createElement('div');
+        document_status_div.classList.add("content");
+        const document_status_text = document.createTextNode(`${this.status}`);
+        document_status_div.appendChild(document_status_text);
+        document_content_div.appendChild(document_status_div);
 
 
         if (this.document_priority === "low") {

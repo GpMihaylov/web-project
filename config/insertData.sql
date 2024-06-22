@@ -36,7 +36,7 @@ INSERT INTO `user` (`email`, `salt`, `password`, `is_admin`) VALUES
 -- Dumping data for table `uploadeddocument`
 --
 
-INSERT INTO `uploadeddocument` (`file_name`, `user`, `location`, `category`, `archived`, `times_downloaded`, `access_key`, `document_priority`, `status`) VALUES
+INSERT INTO `uploadeddocument` (`file_name`, `user`, `location`, `category`, `archived`, `times_downloaded`, `access_key`, `document_priority`, `status`, `upload_date`) VALUES
 ('document1.txt', 'georgi@gmail.com', './upload/66659e5c99cff.txt', 'OtdelStudenti', 0, 0, '9jjxdvovdptlw364w9xh', 'low', 'Нов', '2024-06-21 12:00:00'),
 ('document2.txt', 'georgi@gmail.com', './upload/6665a8ca8c17a.txt', 'Sesiq', 0, 0, 'tapsleqw0phpuafccqi5', 'low', 'Нов', '2024-06-21 12:00:00'),
 ('document3.txt', 'georgi@gmail.com', './upload/6665a8e851861.txt', 'Sesiq', 0, 0, 'r5dqzrn8xomatxkcufqlqo', 'low', 'Нов', '2024-06-21 12:00:00'),

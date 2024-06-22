@@ -85,7 +85,7 @@ class DataBaseConnection {
             'times_downloaded' => $document->getTimes_downloaded(),
             'access_key' => $document->getAccess_key(),
             'document_priority' => $document->getDocument_priority(),
-            'status' => $document->getStatus()
+            'status' => $document->getStatus(),
             'upload_date' => $document->getUpload_date()
         ]);
 
